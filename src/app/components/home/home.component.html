@@ -3,12 +3,12 @@
       <div class="main-form">
           <form [formGroup]="searchForm" method="GET" action="/" class="form-search" role="search">
               <div class="menu-search">
-                  <input type="text" name="search" placeholder="Что вы ищете?" autocomplete="off" (keyup)="setValue($event)">
+                  <input type="text" name="search" placeholder="Поиск" autocomplete="off" (keyup)="setValue($event)">
               </div>
-              <button class="btn submit-search" type="submit" id="searchsubmit" (click)="search()">
-                  <i class="bx bx-search"></i>|<span>Искать</span>
+              <button class="btn submit-search" type="submit" id="searchsubmit" routerLink="/search" (click)="search()">
+                  <i class="bx bx-search"></i>|<span>Поиск</span>
               </button>
-          </form>
+        </form>
       </div>
       <div class="main-img">
           <img src="../../../assets/img/main.png" alt="">

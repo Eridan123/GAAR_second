@@ -5,6 +5,7 @@ import {ResourcesComponent} from "./components/resources/resources.component";
 import {DocumentComponent} from "./components/document/document.component";
 import {AboutComponent} from "./components/about/about.component";
 import {HomeComponent} from "./components/home/home.component";
+import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,9 @@ const routes: Routes = [
   },{
     path: 'contact',
     component: ContactComponent,
+  },{
+    path: 'search',
+    component: SearchComponent,
   },
 ];
 

@@ -19,12 +19,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule } from '@angular/material/input';
 import {HttpClientModule} from "@angular/common/http";
 import {MatListModule} from "@angular/material/list";
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
+    SearchComponent,
     DocumentComponent,
     ContactComponent,
     ResourcesComponent
