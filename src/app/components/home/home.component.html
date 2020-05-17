@@ -1,0 +1,81 @@
+<section class="section" >
+  <div class="main">
+    <div class="main-form">
+      <form [formGroup]="searchForm" method="GET" action="/" class="form-search" role="search">
+        <div class="menu-search">
+          <input type="text" name="searchInput" placeholder="Что вы ищете?" autocomplete="off" (keyup)="setValue($event)">
+        </div>
+        <button class="btn submit-search" type="button" id="searchsubmit" (click)="search()">
+          <mat-icon aria-hidden="false">search</mat-icon>|<span>Искать</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+<mat-card class="main-card" id="search_result" *ngIf="isSearchResult">
+</mat-card>
+<mat-card class="main-card">
+  <mat-grid-list [cols]="3" rowHeight="5:2">
+    <mat-grid-tile>
+      <mat-card>Субъекты естественных монополий</mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>Субъекты занимающие доминирующее положение</mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>Тарифы на гос. услуги</mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>Минимальные уровень контрольных цен</mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>Разрешительные документы</mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>Общие тарифы</mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+<mat-grid-list cols="2" rowHeight="5:2" class="feedback_div" id="feedback_form">
+  <mat-grid-tile>
+    <div class="feedback_text">
+      <h2>Обратная связь.
+        ОСТАВАЙТЕСЬ НА СВЯЗИ.</h2>
+      <br>
+      <h4>Любые вопросы можно задать нам через форму обратной связи.
+        Мы ответим намного быстрее (15 минут в рабочее время),
+        если для общения со Службой Поддержки вы используете внутренний чат Сервиса.
+        Для этого вам необходимо предварительно зарегистрироваться и/или авторизоваться.</h4>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <form [formGroup]="questionForm" method="GET" action="/sdfsd" class="feedback_form">
+      <div class="container">
+        <p>
+          <mat-form-field class="example-full-width">
+            <mat-label></mat-label>
+            <textarea  class="mat-input-element" rows="3" matInput placeholder=""></textarea>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width">
+            <mat-label>Ваше имя</mat-label>
+            <input class="mat-input-element" matInput placeholder="" value="">
+            <mat-icon matSuffix>face</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width">
+            <mat-label>Ваш электронный адрес</mat-label>
+            <mat-icon matSuffix>email</mat-icon>
+            <input class="mat-input-element" matInput  placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <button mat-button color="primary" type="submit" class="submit_btn">Отправить</button>
+        </p>
+      </div>
+    </form>
+  </mat-grid-tile>
+</mat-grid-list>

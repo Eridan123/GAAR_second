@@ -1,0 +1,216 @@
+.section-title {
+  color: lightblue;
+}
+.section-title span {
+  color: lightblue;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+}
+.section.p-50 {
+  padding: 50px 0;
+}
+.main {
+  position: relative;
+  display: block;
+  height: 300px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.main-img img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 100%;
+}
+.main-img:after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgba(0, 0, 255, 0.1);
+}
+.main-form {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.blocks .card-block-primary, .blocks .card-block-second {
+  position: relative;
+  display: block;
+  height: 110px;
+  margin-bottom: 30px;
+}
+.blocks .card-block-primary i, .blocks .card-block-second i, .blocks .card-block-primary .card-title, .blocks .card-block-second .card-title {
+  display: table-cell;
+  vertical-align: middle;
+}
+.blocks .card-block-primary i, .blocks .card-block-second i {
+  font-size: 60px;
+  padding-right: 15px;
+}
+.blocks .card-block-primary .card-title, .blocks .card-block-second .card-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.blocks .card-block-primary {
+  color: blue;
+  border: 1px dashed rgba(0, 0, 255, 0.4);
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 255, 0.09);
+  background: rgba(0, 0, 255, 0.05);
+}
+.blocks .card-block-primary i {
+  color: rgba(0, 0, 255, 0.9);
+}
+.blocks .card-block-primary:hover {
+  background: rgba(0, 0, 255, 0.2);
+}
+.blocks .card-block-second {
+  color: lightblue;
+  border: 1px dashed rgba(173, 216, 230, 0.4);
+  box-shadow: 0px 10px 20px 0px rgba(173, 216, 230, 0.09);
+  background: rgba(173, 216, 230, 0.05);
+}
+.blocks .card-block-second i {
+  color: rgba(173, 216, 230, 0.9);
+}
+.blocks .card-block-second:hover {
+  background: rgba(173, 216, 230, 0.2);
+}
+.blocks .card-center {
+  position: absolute;
+  top: 50%;
+  padding: 20px;
+  transform: translateY(-50%);
+}
+.form-search {
+  position: relative;
+  max-width: 50%;
+  width: 100%;
+  margin: 0 auto;
+}
+.form-search input {
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  color: blue;
+  box-shadow: 0px 20px 30px 0px rgba(0, 0, 255, 0.3);
+}
+.form-search input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.form-search input:focus::-moz-placeholder {
+  color: transparent;
+}
+.form-search input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.form-search input:focus::placeholder {
+  color: transparent;
+}
+.form-search input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+.form-search input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+.form-search input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+.form-search input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+.form-search .submit-search {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: #929ca5;
+}
+.form-search .submit-search mat-icon {
+  position: relative;
+  padding-right: 5px;
+  font-size: 18px;
+}
+.form-search .submit-search span {
+  padding-left: 10px;
+  color: blue;
+}
+.form-search .submit-search:hover {
+  color: gray;
+}
+.form-search .submit-search:hover, .form-search .submit-search:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: none;
+}
+.form-search .btn:active {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.main-card {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  background: none;
+  -webkit-box-shadow: none;
+  color: #222222;
+}
+::ng-deep mat-grid-list {
+  background-color: white;
+}
+.mat-grid-list{
+  box-shadow: 0px 20px 30px 0px rgba(0, 0, 255, 0.3);
+}
+.feedback_form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+  background-color: #3CAEA3;
+  padding: 5px;
+}
+.mat-input-element{
+  color: #222222;
+}
+
+.feedback_div{
+  background-image: url("/assets/images/qq.jpg") !important;
+}
+
+.feedback_text{
+  margin: 10%;
+  color: darkslategrey;
+}
+
+.submit_btn{
+  font-size: 20px;
+  border: none;
+  background : #F6D55C;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
