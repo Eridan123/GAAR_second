@@ -13,7 +13,7 @@ app.get('/*', function(req,res) {
   res.sendFile(path.join(__dirname+'/dist/gaar2/index.html'));
 });
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8080;
 app.set('port',port);
 
 const server = http.createServer(app);
