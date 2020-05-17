@@ -2,14 +2,19 @@
 //Install express server
 const express = require('express');
 const path = require('path');
-
+const http = require('http');
 const app = express();
 
-app.use(express.static('./dist/<name-on-package.json>'));
+// Serve only the static files form the dist directory
+app.use(express.static(__dirname + '/dist/gaar2'));
 
-app.get('/*', function(req, res) {
-  res.sendFile('index.html', {root: 'dist/<name-on-package.json>/'}
-);
+app.get('/*', function(req,res) {
+
+  res.sendFile(path.join(__dirname+'/dist/gaar2/index.html'));
 });
 
-app.listen(process.env.PORT || 8080);
+const port = process.env.PORT || 8000;
+app.set('port',port);
+
+const server = http.createServer(app);
+server.listen(port, () => console.log("server started!!"));
