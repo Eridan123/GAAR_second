@@ -6,7 +6,7 @@ const http = require('http');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/gaar2'));
+app.use(express.static(__dirname + '/dist/gaar2/'));
 
 app.get('/*', function(req,res) {
 
