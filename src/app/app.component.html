@@ -1,61 +1,97 @@
-<header id="main-header">
+<nav class="navbar navbar-expand navbar-top">
   <div class="container">
-
-    <div class="logo" [routerLink]="['/']">
-      <div class="logo__img"><img src="../assets/images/gaar_icon.png" class="lis"></div>
-      <span class="logo__txt">ГОСУДАРСТВЕННОЕ АГЕНТСТВО<br>АНТИМОНОПОЛЬНОГО РЕГУЛИРОВАНИЯ<br><small>ПРИ ПРАВИТЕЛЬСТВЕ КЫРГЫЗСКОЙ РЕСПУБЛИКИ</small><br><b>АИС ГААР</b></span>
-    </div>
-    <div class="links">
-      <mat-chip-list class="row language_translation">
-        <mat-chip><span>KY</span></mat-chip>
-        <mat-chip><span>RU</span></mat-chip>
-        <mat-chip><span>EN</span></mat-chip>
-        <mat-divider [vertical]="false" [inset]="true"></mat-divider>
-        <mat-chip color="accent"><a href="#feedback_form">Обратная связь</a></mat-chip>
-      </mat-chip-list>
-    </div>
-  </div>
-</header>
-<nav  id="navbar" class="navbar navbar-default fixed-top">
-  <div class="container">
-    <ul class="nav_div">
-      <li><a class="nav_text" mat-menu-item routerLink="/about">О проекте </a></li>
-      <li><a class="nav_text" mat-menu-item routerLink="/resource">Ресурсы</a></li>
-      <li><a class="nav_text" mat-menu-item routerLink="/document">Документы </a></li>
-      <li><a class="nav_text" mat-menu-item routerLink="/contact">Контакты </a></li>
-    </ul>
+      <div id="hamburger-menu" class="hamburger">
+          <i class='bx bx-menu-alt-left'></i>
+      </div>
+      <a class="navbar-brand" [routerLink]="['/']">
+          <img src="http://gaar.ulut.kg/assets/logo.png">
+          <div class="navbar-brand-text">
+            ГОСУДАРСТВЕННОЕ АГЕНТСТВО<br>АНТИМОНОПОЛЬНОГО РЕГУЛИРОВАНИЯ<br>
+            <small>ПРИ ПРАВИТЕЛЬСТВЕ КЫРГЫЗСКОЙ РЕСПУБЛИКИ</small><br>
+            <strong>АИС ГААР</strong> 
+          </div>
+      </a>
+      <div id="left-nav">
+          <div id="left-nav-close"><i class='bx bx-x'></i></div>
+          <div class="d-flex justify-content-md-end align-items-center left-nav-left">
+              <nav class="nav nav-locale">
+                  <li class="nav-item"><a rel="alternate" href="#" class="nav-link">KY</a></li>
+                  <li class="nav-item active"><a rel="alternate"  href="#"class="nav-link">RU</a></li>
+                  <li class="nav-item"><a rel="alternate" href="#" class="nav-link">EN</a></li>
+              </nav>
+          </div>
+          <div class="d-flex justify-content-md-end left-nav-right">
+              <ul class="navbar-nav align-items-center">
+                  <li class="nav-item nav-phone">
+                      <a href="#" class="nav-phone-text">0 (312) 56-33-03</a>
+                      <div class="nav-phone-desc">priemnaya@antimonopolia.kg</div>
+                  </li>
+                  <li class="nav-item">
+                      <a class="btn btn-nav" href="/feedback">Оставить заявку<i class='bx bx-right-arrow-alt' ></i></a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div id="user-menu" class="user-menu">
+          <i class='bx bx-menu-alt-right'></i>
+      </div>
   </div>
 </nav>
-<div class="container" style="background-image:url('https://scontent.ffru7-1.fna.fbcdn.net/v/t31.0-8/13995366_325474167788897_7947568202971533117_o.jpg?_nc_cat=109&_nc_sid=dd9801&_nc_ohc=Emi9kqBa8wIAX_UQ902&_nc_ht=scontent.ffru7-1.fna&oh=5f200bfd013e1332422aa776682b74ea&oe=5EE696C7');">
-  <router-outlet></router-outlet>
-</div>
-<footer class="main-card">
-  <mat-grid-list class="footer_div" cols="3" rowHeight="4:2">
-    <mat-grid-tile>
-      <div class="logo" [routerLink]="['/']">
-        <div class="logo__img"><img src="../assets/images/gaar_icon.png" class="lis"></div>
-        <span class="logo__txt"><br><b>АИС ГААР</b></span>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-list>
-        <mat-list-item><h3>НАВИГАЦИЯ</h3></mat-list-item>
-        <mat-list-item>
-          <a class="nav_text" mat-menu-item routerLink="/about">О проекте </a>
-        </mat-list-item>
-        <mat-list-item>
-          <a class="nav_text" mat-menu-item routerLink="/resource">Ресурсы</a>
-        </mat-list-item>
-        <mat-list-item>
-          <a class="nav_text" mat-menu-item routerLink="/document">Документы </a>
-        </mat-list-item>
-        <mat-list-item>
-          <a class="nav_text" mat-menu-item routerLink="/contact">Контакты </a>
-        </mat-list-item>
-      </mat-list>
-      <mat-divider></mat-divider>
-    </mat-grid-tile>
-    <mat-grid-tile><h3>НАШИ КОНТАКТЫ</h3></mat-grid-tile>
-  </mat-grid-list>
-</footer>
 
+<header class="header sticky-top">
+  <div class="container">
+      <div id="right-nav">
+          <div id="right-nav-close"><i class='bx bx-x'></i></div>
+          <ul class="nav justify-content-center navbar-bottom">
+            <li class="nav-item"><a class="nav-link" mat-menu-item routerLink="/about">О проекте </a></li>
+            <li class="nav-item"><a class="nav-link" mat-menu-item routerLink="/resource">Ресурсы</a></li>
+            <li class="nav-item"><a class="nav-link" mat-menu-item routerLink="/document">Документы </a></li>
+            <li class="nav-item"><a class="nav-link" mat-menu-item routerLink="/contact">Контакты </a></li>
+          </ul>
+      </div>
+  </div>
+</header>
+
+<router-outlet></router-outlet>
+
+<section class="section footer p-50">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+              <div class="footer-info">
+                  <a class="navbar-brand" href="#">
+                      <img src="http://gaar.ulut.kg/assets/logo.png">
+                      <div class="navbar-brand-text">
+                        ГОСУДАРСТВЕННОЕ АГЕНТСТВО<br>АНТИМОНОПОЛЬНОГО РЕГУЛИРОВАНИЯ<br>
+                        <small>ПРИ ПРАВИТЕЛЬСТВЕ КЫРГЫЗСКОЙ РЕСПУБЛИКИ</small><br>
+                        <strong>АИС ГААР</strong> 
+                      </div>
+                  </a>
+                  <div class="footer-desc">
+                    <div style="position:relative;overflow:hidden;"><a href="https://yandex.ua/maps/10309/bishkek/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Бишкек</a><a href="https://yandex.ua/maps/10309/bishkek/?from=api-maps&ll=74.576156%2C42.842210&mode=usermaps&origin=jsapi_2_1_76&um=constructor%3AlimpbfsaLRu4NOoNyBDCr-WRWxLPdFTz&utm_medium=mapframe&utm_source=maps&z=13" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс.Карты — поиск мест и адресов, городской транспорт</a><iframe src="https://yandex.ua/map-widget/v1/-/CCQ47Fa79C" width="100%" height="150px" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="footer-title">Навигация</div>
+              <ul class="list-unstyled footer-list">
+                  <li><a routerLink="/about">О проекте</a></li>
+                  <li><a routerLink="/resource">Ресурсы</a></li>
+                  <li><a routerLink="/document">Документы</a></li>
+                  <li><a routerLink="/contact">Контакты</a></li>
+              </ul>
+          </div>
+          <div class="col-md-3">
+              <div class="footer-title">Наши контакты</div>
+              <ul class="list-unstyled footer-list">
+                  <li>г. Бишкек ул. Б.Баатыра 7Б/1 </li>
+                  <li>0(312) 56-33-03 </li>
+                  <li>0(312) 56-31-97 | Телефон доверия </li>
+                  <li><a href="#">priemnaya@antimonopolia.kg</a></li>
+                  <li>Пон-Пят 09:00 - 18:00 </li>
+                  <li><a href="#">facebook.com/antimonopolia</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</section>

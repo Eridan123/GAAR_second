@@ -1,81 +1,131 @@
-<section class="section" >
+<section class="section">
   <div class="main">
-    <div class="main-form">
-      <form [formGroup]="searchForm" method="GET" action="/" class="form-search" role="search">
-        <div class="menu-search">
-          <input type="text" name="searchInput" placeholder="Что вы ищете?" autocomplete="off" (keyup)="setValue($event)">
-        </div>
-        <button class="btn submit-search" type="button" id="searchsubmit" (click)="search()">
-          <mat-icon aria-hidden="false">search</mat-icon>|<span>Искать</span>
-        </button>
-      </form>
-    </div>
+      <div class="main-form">
+          <form [formGroup]="searchForm" method="GET" action="/" class="form-search" role="search">
+              <div class="menu-search">
+                  <input type="text" name="search" placeholder="Что вы ищете?" autocomplete="off" (keyup)="setValue($event)">
+              </div>
+              <button class="btn submit-search" type="submit" id="searchsubmit" (click)="search()">
+                  <i class="bx bx-search"></i>|<span>Искать</span>
+              </button>
+          </form>
+      </div>
+      <div class="main-img">
+          <img src="../../../assets/img/main.png" alt="">
+      </div>
   </div>
 </section>
-<mat-card class="main-card" id="search_result" *ngIf="isSearchResult">
-</mat-card>
-<mat-card class="main-card">
-  <mat-grid-list [cols]="3" rowHeight="5:2">
-    <mat-grid-tile>
-      <mat-card>Субъекты естественных монополий</mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card>Субъекты занимающие доминирующее положение</mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card>Тарифы на гос. услуги</mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card>Минимальные уровень контрольных цен</mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card>Разрешительные документы</mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card>Общие тарифы</mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</mat-card>
-<mat-grid-list cols="2" rowHeight="5:2" class="feedback_div" id="feedback_form">
-  <mat-grid-tile>
-    <div class="feedback_text">
-      <h2>Обратная связь.
-        ОСТАВАЙТЕСЬ НА СВЯЗИ.</h2>
-      <br>
-      <h4>Любые вопросы можно задать нам через форму обратной связи.
-        Мы ответим намного быстрее (15 минут в рабочее время),
-        если для общения со Службой Поддержки вы используете внутренний чат Сервиса.
-        Для этого вам необходимо предварительно зарегистрироваться и/или авторизоваться.</h4>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <form [formGroup]="questionForm" method="GET" action="/sdfsd" class="feedback_form">
-      <div class="container">
-        <p>
-          <mat-form-field class="example-full-width">
-            <mat-label></mat-label>
-            <textarea  class="mat-input-element" rows="3" matInput placeholder=""></textarea>
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field class="example-full-width">
-            <mat-label>Ваше имя</mat-label>
-            <input class="mat-input-element" matInput placeholder="" value="">
-            <mat-icon matSuffix>face</mat-icon>
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field class="example-full-width">
-            <mat-label>Ваш электронный адрес</mat-label>
-            <mat-icon matSuffix>email</mat-icon>
-            <input class="mat-input-element" matInput  placeholder="pat@example.com" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-          </mat-form-field>
-        </p>
-        <p>
-          <button mat-button color="primary" type="submit" class="submit_btn">Отправить</button>
-        </p>
+<section class="section p-50 blocks">
+  <div class="container">
+      <div class="section-title mb-4"><span>Государственные реестры</span></div>
+      <div class="row">
+          <div class="col-md-3">
+              <a href="#" class="card card-block-primary ">
+                  <div class="card-center">
+                      <i class="bx bx-task"></i>
+                      <div class="card-title">Субъекты естественных монополий</div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-md-3">
+              <a href="#" class="card card-block-second">
+                  <div class="card-center">
+                    <i class='bx bx-bar-chart-alt-2' ></i>
+                      <div class="card-title">Субъекты занимающие доминирующее положение</div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-md-3">
+              <a href="#" class="card card-block-primary">
+                  <div class="card-center">
+                        <i class='bx bx-money'></i>
+                      <div class="card-title">Государственные платные услуги</div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-md-3">
+              <a href="#" class="card card-block-second">
+                  <div class="card-center">
+                    <i class='bx bx-briefcase-alt' ></i>
+                      <div class="card-title">Муниципальные платные услуги</div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-md-3">
+              <a href="#" class="card card-block-second">
+                  <div class="card-center">
+                    <i class='bx bx-spreadsheet' ></i>
+                      <div class="card-title">Единый реестр государственных услуг</div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-md-3">
+              <a href="#" class="card card-block-primary">
+                  <div class="card-center">
+                    <i class='bx bx-file'></i>
+                      <div class="card-title">Реестр разрешительных документов</div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-md-3">
+              <a href="#" class="card card-block-second">
+                  <div class="card-center">
+                    <i class='bx bx-credit-card-front' ></i>
+                      <div class="card-title">Минимальный уровень контрольных цен</div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-md-3">
+              <a href="#" class="card card-block-primary">
+                  <div class="card-center">
+                    <i class='bx bx-wallet-alt' ></i>
+                      <div class="card-title">Цены на социальные значимые товары</div>
+                  </div>
+              </a>
+          </div>
       </div>
-    </form>
-  </mat-grid-tile>
-</mat-grid-list>
+  </div>
+</section>
+<section class="section feedback" id="feedback">
+  <div class="container feedback-text">
+      <div class="row align-items-center slide-item-center justify-content-center">
+          <div class="col-md-6">
+              <div class="section-title white-color">Обратная связь.<span class="white-color">Оставайтесь на связи.</span></div>
+              <div class="feedback-desc mt-4">
+                  Любые вопросы можно задать нам через форму
+                  обратной связи. Мы ответим намного быстрее
+                  (15 минут в рабочее время), если для общения
+                  со Службой Поддержки вы используете
+                  внутренний чат Сервиса. Для этого вам
+                  необходимо предварительно
+                  зарегистрироваться и/или авторизоваться.
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="feedback-form">
+                  <form [formGroup]="questionForm" method="GET" action="/sdfsd" class="feedback_form" novalidate>
+                      <div class="form-group">
+                          <textarea class="form-control" id="desc" name="desc" rows="5" placeholder="Ваш вопрос" required></textarea>
+                      </div>
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text"><i class='bx bx-mail-send'></i></div>
+                          </div>
+                          <input type="email" class="form-control" placeholder="Ваш электронный адрес" id="email" name="email" required>
+                      </div>
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text"><i class='bx bx-user-circle' ></i></div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Ваше имя" id="name" name="name" required>
+                      </div>
+                      <button type="submit" class="btn btn-send">Отправить</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="feedback-img">
+      <img src="../../../assets/img/feedback.png">
+  </div>
+</section>
