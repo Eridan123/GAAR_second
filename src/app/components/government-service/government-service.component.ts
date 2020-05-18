@@ -42,6 +42,11 @@ export class GovernmentServiceComponent {
           version: 4,
           key: 'Id',
           url: `${environment.apiUrl}/odata/governmentServiceview`,
+          beforeSend: (e) => {
+            e.headers = {
+              'Access-Control-Allow-Origin':'*',
+            };
+          },
           onLoaded: () => {  }
         }),
         filter: [ [ 'IsStateService', '=', municipal ], 'and', [ 'MarkAsDeleted', '=', false ] ],

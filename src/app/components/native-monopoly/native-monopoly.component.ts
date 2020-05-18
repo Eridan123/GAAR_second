@@ -41,6 +41,11 @@ export class NativeMonopolyComponent {
           version: 4,
           key: 'Id',
           url: `${environment.apiUrl}/odata/NativeMonopolyView`,
+          beforeSend: (e) => {
+            e.headers = {
+              'Access-Control-Allow-Origin':'*',
+            };
+          },
         }),
         filter: [  [ 'MarkAsDeleted', '=', false ] ],
         sort: [ { selector: 'Id', desc: true } ]
