@@ -20,6 +20,15 @@ import {MatInputModule } from '@angular/material/input';
 import {HttpClientModule} from "@angular/common/http";
 import {MatListModule} from "@angular/material/list";
 import { SearchComponent } from './components/search/search.component';
+import {NativeMonopolyComponent} from "./components/native-monopoly/native-monopoly.component";
+import {DevExtremeModule} from "devextreme-angular";
+import {DominateMonopolyComponent} from "./components/dominant-monopoly/dominant-monopoly.component";
+import {GovernmentServiceComponent} from "./components/government-service/government-service.component";
+import {ImportedProductComponent} from "./components/imported-product/imported-product.component";
+import {
+  PermissionDocumentsComponent
+} from "./components/permission-document/permission-document.component";
+import {ServiceComponent} from "./components/service/service.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +38,13 @@ import { SearchComponent } from './components/search/search.component';
     SearchComponent,
     DocumentComponent,
     ContactComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    NativeMonopolyComponent,
+    DominateMonopolyComponent,
+    GovernmentServiceComponent,
+    PermissionDocumentsComponent,
+    ImportedProductComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +61,7 @@ import { SearchComponent } from './components/search/search.component';
     ReactiveFormsModule,
     MatInputModule,
     MatListModule,
+    DevExtremeModule,
 
   ],
   providers: [],

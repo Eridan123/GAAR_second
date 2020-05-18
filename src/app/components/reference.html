@@ -1,0 +1,53 @@
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+
+    <dx-tree-list
+      id="organizations"
+      [dataSource]="dxDataSource"
+      keyExpr="Id"
+      parentIdExpr="Parent"
+      columnAutoWidth="true"
+      showBorders="true"
+      showRowLines="true"
+      hasItemsExpr="IsFolder"
+      showColumnLines="true"
+      allowColumnResizing="true"
+      columnResizingMode="nextColumn"
+      columnHidingEnabled="true"
+      wordWrapEnabled="true">
+
+      <dxo-column-chooser enabled="true" mode="select"></dxo-column-chooser>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+      <dxo-selection mode="single"></dxo-selection>
+
+      <dxo-scrolling mode="standard"></dxo-scrolling>
+      <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
+      <dxo-pager
+        [infoText]="'Всего {2} записей'"
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[10, 20, 50, 100]"
+        [showInfo]="true"></dxo-pager>
+
+
+        <!-- Start Edit here -->
+        <dxi-column *ngFor="let row of rows"
+          [width]="row.width"
+          [dataField]="row.fieldName"
+          [customizeText]="row.customizeText"
+          [caption]="row.caption">
+        </dxi-column>
+        <!-- End Edit here -->
+
+    </dx-tree-list>
+
+  </mat-card-content>
+  <mat-divider></mat-divider>
+
+</mat-card>
