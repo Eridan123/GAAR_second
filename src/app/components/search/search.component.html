@@ -12,33 +12,77 @@
   <div class="container">
     <div class="section-title mb-4"><span>Расширенный поиск</span></div>
     <div class="section-body">
-        <div class="search">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail4">В заголовках</label>
-                <input type="email" class="form-control" id="inputEmail4">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputPassword4">По содержимому</label>
-                <input type="password" class="form-control" id="inputPassword4">
-              </div>
-              <div class="form-group col-md-3">
-                <label for="inputState">В реестре</label>
-                <select id="inputState" class="form-control">
-                  <option selected>--Все--</option>
-                  <option>Субъекты естественных монополий</option>
-                <option>Субъекты занимающие доминирующее положение</option>
-                <option>Государственные платные услуги</option>
-                <option>Муниципальные платные услуги</option>
-                <option>Единый реестр государственных услуг</option>
-                <option>Реестр разрешительных документов</option>
-                <option>Минимальный уровень контрольных цен</option>
-                <option>Цены на социальные значимые товары</option>
-                </select>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Поиск</button>
+      <div class="search">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">По содержимому</label>
+            <input type="email" class="form-control" id="inputEmail4" [value]="searchValue" (change)="setSearchValue($event)">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputState">В реестре</label>
+            <select id="inputState" class="form-control">
+              <option selected>--Все--</option>
+              <option>Субъекты естественных монополий</option>
+              <option>Субъекты занимающие доминирующее положение</option>
+              <option>Государственные платные услуги</option>
+              <option>Муниципальные платные услуги</option>
+              <option>Единый реестр государственных услуг</option>
+              <option>Реестр разрешительных документов</option>
+              <option>Минимальный уровень контрольных цен</option>
+              <option>Цены на социальные значимые товары</option>
+            </select>
+          </div>
         </div>
+        <button type="submit" class="btn btn-primary" (click)="search()">Поиск</button>
+      </div>
     </div>
   </div>
 </section>
+<mat-card *ngFor="let dataMod of datatableValues;" style="background-color: white">
+  <div class="section-title mb-1"><span>Результат {{dataMod.subtitle}}</span></div>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+
+    <dx-data-grid id="gridContainer"
+                  [dataSource]="dataMod.dxDataSource"
+                  showBorders="true"
+                  noDataText="Ничего не найдено!"
+                  showRowLines="true"
+                  showColumnLines="true"
+                  allowColumnResizing="true"
+                  columnResizingMode="nextColumn"
+                  columnAutoWidth="true"
+                  wordWrapEnabled="true">
+
+<!--      <dxo-group-panel [visible]="true"></dxo-group-panel>-->
+<!--      <dxo-grouping [autoExpandAll]="false" [contextMenuEnabled]="true" expandMode="rowClick"></dxo-grouping>-->
+<!--      <dxo-column-chooser enabled="true" mode="select"></dxo-column-chooser>-->
+<!--      <dxo-export [enabled]="true" fileName="Отчет" [allowExportSelectedData]="true"></dxo-export>-->
+<!--      <dxo-filter-row [visible]="true"></dxo-filter-row>-->
+<!--      <dxo-selection mode="multiple"></dxo-selection>-->
+
+
+      <!-- Start Edit here -->
+      <dxi-column *ngFor="let row of dataMod.rows"
+                  [width]="row.width"
+                  [dataField]="row.fieldName"
+                  [caption]="row.caption"
+                  [customizeText]="row.customizeText"
+                  [calculateCellValue]="row.calculateCellValue"
+                  [calculateDisplayValue]="row.calculateDisplayValue"
+                  [visible]="row.visible"></dxi-column>
+
+      <!-- End Edit here -->
+
+      <dxo-paging [enabled]="true" [pageSize]="5"></dxo-paging>
+      <dxo-pager
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5,10, 20, 50]"
+        [showNavigationButtons]="true"
+        [showInfo]="true" infoText="Страница {0} из {1} (Всего : {2} записей)">
+      </dxo-pager>
+
+    </dx-data-grid>
+
+  </mat-card-content>
+</mat-card>

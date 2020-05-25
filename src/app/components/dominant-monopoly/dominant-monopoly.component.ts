@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import DataSource from 'devextreme/data/data_source';
 import ODataStore from 'devextreme/data/odata/store';
-import {  DominantMonopolyColumns } from './dominant-monopoly';
+import {DominantMonopolyColumns, dominantMonopolyDatatableValues} from './dominant-monopoly';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 
-import {DxColumn} from "../base";
-import {environment} from "../../../environments/environment.prod";
+import {datatableBuilderFunction, DatatableValuesModel, DxColumn} from "../base";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-dominate-monopoly',
@@ -16,32 +16,14 @@ import {environment} from "../../../environments/environment.prod";
 })
 export class DominateMonopolyComponent {
 
-  private subscription: Subscription;
-  titles = ['Республиканский реестр', 'Региональный реестр'];
-  title: string;
-  subtitle = 'субъектов занимающих доминирующее положение на товарных рынках Кыргызской Республики';
-  componentUrl = 'dominantmonopoly';
-  rows: DxColumn[] = DominantMonopolyColumns;
+  datatableValues : DatatableValuesModel;
 
 
-  dxDataSource: DataSource;
 
   // ******************* Settings *********************************
-  constructor(
-    private http: HttpClient,
-    private activateRoute: ActivatedRoute,) {
+  constructor() {
+    this.datatableValues = dominantMonopolyDatatableValues;
+    this.datatableValues = datatableBuilderFunction(this.datatableValues);
 
-    this.subscription = activateRoute.params.subscribe(params => {
-      this.dxDataSource = new DataSource({
-        store: new ODataStore({
-          version: 4,
-          key: 'Id',
-          url: `${environment.apiUrl}/odata/${this.componentUrl}`,
-        }),
-        expand: [ 'Organization', 'Product', 'Region', 'IncludeOrder', 'ExcludeOrder', 'CorrectOrder' ],
-        filter: [ [ 'MarkAsDeleted', '=', false ] ],
-        sort: [ { selector: 'Id', desc: true } ]
-      });
-    });
   }
 }

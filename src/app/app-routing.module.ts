@@ -35,7 +35,7 @@ const routes: Routes = [
     path: 'contact',
     component: ContactComponent,
   },{
-    path: 'search',
+    path: 'search/:searchValue',
     component: SearchComponent,
   },
   {

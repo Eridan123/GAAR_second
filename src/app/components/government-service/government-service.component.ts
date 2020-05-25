@@ -6,9 +6,9 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 
 import notify from 'devextreme/ui/notify';
-import {DxColumn} from "../base";
-import {environment} from "../../../environments/environment.prod";
-import {GovernmentService, GovernmentServiceColumns} from "./government-service";
+import {datatableBuilderFunction, DatatableValuesModel, DxColumn} from "../base";
+import {environment} from "../../../environments/environment";
+import {GovernmentService, GovernmentServiceColumns, governmentServiceDatatableValues} from "./government-service";
 
 @Component({
   selector: 'app-government-service',
@@ -18,40 +18,21 @@ import {GovernmentService, GovernmentServiceColumns} from "./government-service"
 export class GovernmentServiceComponent {
 
   private subscription: Subscription;
-
-  titles = ['Государственные платные услуги', 'Муниципальные платные услуги'];
-  title: string;
-  subtitle = '';
-  componentItem: GovernmentService = new GovernmentService();
-  rows: DxColumn[] = GovernmentServiceColumns;
-  dxDataSource: DataSource;
+  datatableValues : DatatableValuesModel
 
 
   constructor(
     private http: HttpClient,
     private activateRoute: ActivatedRoute) {
 
+
     this.subscription = activateRoute.params.subscribe(params => {
+      this.datatableValues = governmentServiceDatatableValues;
 
       const municipal = params.mtype !== 'state';
-      this.title = municipal ? this.titles[1] : this.titles[0];
-      this.componentItem.isStateService = municipal;
-
-      this.dxDataSource = new DataSource({
-        store: new ODataStore({
-          version: 4,
-          key: 'Id',
-          url: `${environment.apiUrl}/odata/governmentServiceview`,
-          beforeSend: (e) => {
-            e.headers = {
-              'Access-Control-Allow-Origin':'*',
-            };
-          },
-          onLoaded: () => {  }
-        }),
-        filter: [ [ 'IsStateService', '=', municipal ], 'and', [ 'MarkAsDeleted', '=', false ] ],
-        sort: [ { selector: 'Id', desc: true } ]
-      });
+      this.datatableValues.title = municipal ? this.datatableValues.titles[1] : this.datatableValues.titles[0];
+      this.datatableValues.filterValue = [ [ 'IsStateService', '=', municipal ], 'and', [ 'MarkAsDeleted', '=', false ]];
+      this.datatableValues = datatableBuilderFunction(this.datatableValues);
     });
   }
 }

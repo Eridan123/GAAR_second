@@ -1,15 +1,15 @@
 <mat-card>
 
   <mat-card-header>
-    <mat-card-title>{{title}}</mat-card-title>
-    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+    <mat-card-title>{{datatableValues.title}}</mat-card-title>
+    <mat-card-subtitle>{{datatableValues.subtitle}}</mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
 
     <dx-tree-list
       id="organizations"
-      [dataSource]="dxDataSource"
+      [dataSource]="datatableValues.dxDataSource"
       keyExpr="Id"
       parentIdExpr="Parent"
       columnAutoWidth="true"
@@ -37,7 +37,7 @@
 
 
         <!-- Start Edit here -->
-        <dxi-column *ngFor="let row of rows"
+        <dxi-column *ngFor="let row of datatableValues.rows"
           [width]="row.width"
           [dataField]="row.fieldName"
           [customizeText]="row.customizeText"

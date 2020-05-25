@@ -1,19 +1,14 @@
 import {Validators} from '@angular/forms';
 import {environment} from "../../environments/environment.prod";
+import {ServiceColumns} from "./service/service";
+import DataSource from "devextreme/data/data_source";
+import ODataStore from "devextreme/data/odata/store";
+import DevExpress from "devextreme";
+import data = DevExpress.data;
+import {HttpClient} from "@angular/common/http";
 
 export function renderOrder(order: any) {
   return '№' + order.orderNumber + ',  от ' + new Date(order.documentDate).toLocaleDateString() + ' - "' + order.comments + '"';
-}
-export interface MenuNode {
-  id: number;
-  name: string;
-  children?: MenuNode[];
-}
-export interface FlatNode {
-  id: number;
-  expandable: boolean;
-  name: string;
-  level: number;
 }
 export interface ApiResponse {
   hasError: boolean;
@@ -101,3 +96,71 @@ export
   DOCUMENT_COLUMNS,
   ORDER_DOCUMENT_COLUMNS
 };
+
+// Datatable draw model
+export class DatatableValuesModel {
+  constructor(titles, title, subtitle, componentUrl, rows, selectFields, sortValues, filterValue, expandValues) {
+    this.titles = titles;
+    this.title = title;
+    this.subtitle = subtitle;
+    this.componentUrl = componentUrl;
+    this.rows = rows;
+    this.selectFields = selectFields;
+    this.sortValues = sortValues;
+    this.filterValue = filterValue;
+    this.expandValues = expandValues;
+
+  }
+
+  hasData : boolean = true;
+  titles : string[];
+  title : string;
+  subtitle : string;
+  componentUrl : string;
+  rows : DxColumn[];
+  dxDataSource : DataSource;
+  selectFields : any;
+  sortValues : any;
+  filterValue : any;
+  expandValues : any;
+}
+
+// Datatable drawer function
+export function datatableBuilderFunction(datatableValues : DatatableValuesModel) {
+
+  datatableValues.dxDataSource = new DataSource({
+    store: new ODataStore({
+      version: 4,
+      key: 'Id',
+      url: `${environment.apiUrl}/${datatableValues.componentUrl}`,
+      beforeSend: (e) => {
+        e.headers = {
+          'Access-Control-Allow-Origin':'*',
+        };
+      },
+    }),
+    select: datatableValues.selectFields,
+    expand: datatableValues.expandValues,
+    filter: datatableValues.filterValue,
+    sort: datatableValues.sortValues,
+  });
+
+  return datatableValues;
+}
+export function searchQueryBuilder(dxColumns : DxColumn[], searchStr : string) {
+  var result = [];
+  searchStr = "науки";
+  dxColumns.forEach(function (value) {
+    // var result1 = [];
+    if(value.fieldName != 'Id') {
+      // result1 = [];
+      // result1.push(value.fieldName);
+      // result1.push('Contains');
+      // result1.push(searchStr);
+      result.push(value.fieldName);
+    }
+  })
+  return result;
+}
+
+

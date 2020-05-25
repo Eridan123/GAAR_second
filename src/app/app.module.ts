@@ -8,7 +8,7 @@ import {AboutComponent} from "./components/about/about.component";
 import {DocumentComponent} from "./components/document/document.component";
 import {ContactComponent} from "./components/contact/contact.component";
 import {ResourcesComponent} from "./components/resources/resources.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
@@ -46,24 +46,25 @@ import {ServiceComponent} from "./components/service/service.component";
     ImportedProductComponent,
     ServiceComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatIconModule,
-    MatChipsModule,
-    MatDividerModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatListModule,
-    DevExtremeModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatCardModule,
+        MatIconModule,
+        MatChipsModule,
+        MatDividerModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatListModule,
+        DevExtremeModule,
+        FormsModule,
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

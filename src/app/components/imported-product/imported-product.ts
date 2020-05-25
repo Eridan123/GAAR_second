@@ -1,4 +1,4 @@
-import {Base, DxColumn} from '../base';
+import {Base, DatatableValuesModel, DxColumn} from '../base';
 
 const ImportedProductColumns: DxColumn[] = [
   { fieldName: 'Id', caption: '#', visible: false },
@@ -8,7 +8,6 @@ const ImportedProductColumns: DxColumn[] = [
   { fieldName: 'Price', caption: 'Уровен МУКЦ' },
   { fieldName: 'OrderDocument.Name', caption: 'Реквизиты приказа ГААР об установлении/изменении МУКЦ' }
 ];
-export { ImportedProductColumns };
 export class ImportedProduct extends Base {
   documentDate: Date = new Date();
   imported: boolean;
@@ -18,3 +17,16 @@ export class ImportedProduct extends Base {
   price: any;
   orderDocument: number;
 }
+var importedProductDatatableValues = new DatatableValuesModel(
+  ['Минимальный уровень контрольных цен', 'Цены на социальные значимые товары '],
+  null,
+  null,
+  'odata/SimpleImportedProduct',
+  ImportedProductColumns,
+  [ 'Id', 'DocumentDate', 'Product', 'Code', 'Price', 'OrderDocument' ],
+  [ { selector: 'Id', desc: true } ],
+  null,
+  [ 'OrderDocument', 'Product.Unit' ]
+);
+
+export { ImportedProductColumns, importedProductDatatableValues};

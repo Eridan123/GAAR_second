@@ -1,4 +1,4 @@
-import {DxColumn, Reference} from "../base";
+import {DatatableValuesModel, DxColumn, Reference} from "../base";
 
 const ServiceColumns: DxColumn[] = [
   { fieldName: 'Name', caption: 'Название' },
@@ -9,10 +9,24 @@ const ServiceColumns: DxColumn[] = [
   // , customizetext: 'customText' },
   { fieldName: 'Comment', caption: 'Примечание' },
 ];
-export { ServiceColumns };
+
 export class Service extends Reference {
     section: string;
     authorizedOrganization: number;
     serviceTerm = 0;
     comment: string;
 }
+
+var serviceDatatableValues = new DatatableValuesModel(
+  [],
+  'ЕДИНЫЙ РЕЕСТР (ПЕРЕЧЕНЬ)',
+  'государственных услуг, оказываемых государственными органами, их структурными подразделениями и подведомственными учреждениями',
+  'odata/SimpleService',
+  ServiceColumns,
+  [ 'Id', 'Name', 'IsFolder', 'Parent', 'Section', 'ServiceTerm', 'ServiceTermString', 'Comment', 'AuthorizedOrganization' ],
+  null,
+  [[ 'MarkAsDeleted', '=', false ]],
+  [ 'AuthorizedOrganization' ]
+);
+
+export { ServiceColumns, serviceDatatableValues};

@@ -1,4 +1,4 @@
-import {DxColumn, Monopoly} from '../base';
+import {DatatableValuesModel, DxColumn, Monopoly} from '../base';
 
 const NativeMonopolyColumns: DxColumn[] = [
   { fieldName: 'Id', caption: '#', visible: false },
@@ -16,4 +16,16 @@ const NativeMonopolyColumns: DxColumn[] = [
 export class NativeMonopoly extends Monopoly {
   regulationType: number;
 }
-export { NativeMonopolyColumns };
+
+var nativeMonopolyDatatableValues = new DatatableValuesModel(
+  ['Республиканский реестр', 'Региональный реестр'],
+  "",
+  'субъектов естественных монополий в Кыргызской Республики',
+  'odata/SimpleNativeMonopolyView',
+  NativeMonopolyColumns,
+  null,
+  [ { selector: 'Id', desc: true } ],
+  [  [ 'MarkAsDeleted', '=', false ] ],
+  null
+);
+export { NativeMonopolyColumns, nativeMonopolyDatatableValues};

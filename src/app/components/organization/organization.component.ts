@@ -4,7 +4,7 @@ import { Organization,  OrganizationCollumns } from './organization';
 import DataSource from 'devextreme/data/data_source';
 import ODataStore from 'devextreme/data/odata/store';
 import notify from 'devextreme/ui/notify';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import {ApiResponse} from "../base";
 
 @Component({
@@ -37,15 +37,5 @@ export class OrganizationComponent implements OnInit {
 
   constructor(
       private http: HttpClient) {
-  }
-
-  delete(key): void {
-    this.http.get<any>(`${environment.apiUrl}/${this.componentUrl}/delete/${key.row.data.Id}`)
-      .subscribe( e => {
-        const apiResponse: ApiResponse = e as ApiResponse;
-        const type = apiResponse.hasError ? 'error' : 'success';
-        notify(apiResponse.message, type, 2000);
-        this.dxDataSource.reload();
-      });
   }
 }

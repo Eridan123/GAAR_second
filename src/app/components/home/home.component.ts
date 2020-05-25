@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment.prod";
 import {FormControl, Validators} from "@angular/forms";
 import {getErrorMessage} from "codelyzer/templateAccessibilityElementsContentRule";
+import {ActivatedRoute,  Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import {getErrorMessage} from "codelyzer/templateAccessibilityElementsContentRul
 export class HomeComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  searchValue="";
+  searchValue ="";
   searchResults = {};
   isSearchResult=false;
   searchForm = new FormControl('');
@@ -30,30 +31,7 @@ export class HomeComponent implements OnInit {
     return this.email.hasError('email') ? 'Неверный адрес электронной почты' : '';
   }
 
-  search() : void{
-    const headerDict = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    }
-    const requestOptions = {
-      headers: new Headers(headerDict),
-    };
-
-    if(this.searchValue != null || this.searchValue != "")
-    {
-      for (var i=0;i<10;i++)
-      {
-        // this.http.post<any>(`${environment.apiUrl}/simpleuser/search/`, {"value" : this.searchValue,"type" : i},requestOptions)
-        //   .subscribe(resp => {
-        //     this.searchResults[i]=resp;
-        //   });
-      }
-    }
-  }
-  setValue(event : any):void
-  {
+  setSearchValue(event : any){
     this.searchValue = event.target.value;
   }
-
 }

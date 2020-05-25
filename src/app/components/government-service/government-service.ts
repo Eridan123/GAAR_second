@@ -1,4 +1,4 @@
-import {DocumentBase, DxColumn} from '../base';
+import {DatatableValuesModel, DocumentBase, DxColumn} from '../base';
 
 const GovernmentServiceColumns: DxColumn[] = [
   { fieldName: 'Id', caption: '#', visible: false },
@@ -17,4 +17,17 @@ export class GovernmentService extends DocumentBase {
   product: number;
   isStateService: boolean;
 }
-export { GovernmentServiceColumns };
+
+var governmentServiceDatatableValues = new DatatableValuesModel(
+  ['Государственные платные услуги', 'Муниципальные платные услуги'],
+  null,
+  "",
+  "odata/SimpleGovernmentServiceview",
+  GovernmentServiceColumns,
+  null,
+  [ { selector: 'Id', desc: true } ],
+  null,
+  null
+);
+
+export { GovernmentServiceColumns, governmentServiceDatatableValues};

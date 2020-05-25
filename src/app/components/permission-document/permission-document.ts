@@ -1,4 +1,4 @@
-import {Base, DxColumn} from '../base';
+import {Base, DatatableValuesModel, DxColumn} from '../base';
 
 const PermissionDocumentColumns: DxColumn[] = [
   { fieldName: 'Id', caption: '#', visible: false },
@@ -8,7 +8,6 @@ const PermissionDocumentColumns: DxColumn[] = [
   { width: '300', fieldName: 'Price', caption: 'Стоимость разрешительного документа, согласованная антимонопольным органом' },
   { fieldName: 'OrderDocument.Name', caption: 'Реквизиты приказа ГААР о согласовании/изменении/отмене стоимости разрешительного документа' }
 ];
-export { PermissionDocumentColumns };
 export class PermissionDocument extends Base {
   documentDate: Date = new Date();
   organization: number;
@@ -16,3 +15,16 @@ export class PermissionDocument extends Base {
   price: number;
   orderDocument: number;
 }
+var permissionDocumentDatatableValues = new DatatableValuesModel(
+  [],
+  'Cтоимости разрешительных документов',
+  null,
+  'odata/SimplePermissionDocument',
+  PermissionDocumentColumns,
+  [ 'Id', 'Organization', 'Product', 'OrderDocument', 'Price' ],
+  [ { selector: 'Id', desc: true } ],
+  [  [ 'MarkAsDeleted', '=', false ] ],
+  [ 'Organization', 'Product', 'OrderDocument' ]
+);
+
+export { PermissionDocumentColumns, permissionDocumentDatatableValues};

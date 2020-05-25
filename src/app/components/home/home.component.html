@@ -1,13 +1,13 @@
 <section class="section">
   <div class="main">
       <div class="main-form">
-          <form [formGroup]="searchForm" method="GET" action="/" class="form-search" role="search">
+          <form method="GET" class="form-search" role="search">
               <div class="menu-search">
-                  <input type="text" name="search" placeholder="Поиск" autocomplete="off" (keyup)="setValue($event)">
+                  <input type="text" name="search" placeholder="Поиск" autocomplete="off" [ngModel]="searchValue" (change)="setSearchValue($event)">
               </div>
-              <button class="btn submit-search" type="submit" id="searchsubmit" routerLink="/search" (click)="search()">
+              <a class="btn submit-search" type="submit" id="searchsubmit" [routerLink]="['search', searchValue]">
                   <i class="bx bx-search"></i>|<span>Поиск</span>
-              </button>
+              </a>
         </form>
       </div>
       <div class="main-img">

@@ -1,4 +1,4 @@
-import {DxColumn, Monopoly} from '../base';
+import {DatatableValuesModel, DxColumn, Monopoly} from '../base';
 
 const DominantMonopolyColumns: DxColumn[] = [
   { fieldName: 'Id', caption: '#', visible: false },
@@ -14,4 +14,17 @@ const DominantMonopolyColumns: DxColumn[] = [
 export class DominantMonopoly extends Monopoly {
   actionOrderDocuments: any;
 }
-export { DominantMonopolyColumns };
+
+var dominantMonopolyDatatableValues = new DatatableValuesModel(
+  ['Республиканский реестр', 'Региональный реестр'],
+  null,
+  'субъектов занимающих доминирующее положение на товарных рынках Кыргызской Республики',
+  'odata/SimpleDominantMonopoly',
+  DominantMonopolyColumns,
+  null,
+  [ { selector: 'Id', desc: true } ],
+  [ [ 'MarkAsDeleted', '=', false ] ],
+  [ 'Organization', 'Product', 'Region', 'IncludeOrder', 'ExcludeOrder', 'CorrectOrder' ]
+);
+
+export { DominantMonopolyColumns, dominantMonopolyDatatableValues};

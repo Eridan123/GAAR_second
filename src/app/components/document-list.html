@@ -2,14 +2,14 @@
   <div style="padding-bottom: 15px;">
   </div>
   <mat-card-header>
-    <mat-card-title>{{title}}</mat-card-title>
-    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+    <mat-card-title>{{datatableValues.title}}</mat-card-title>
+    <mat-card-subtitle>{{datatableValues.subtitle}}</mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
 
     <dx-data-grid id="gridContainer"
-                  [dataSource]="dxDataSource"
+                  [dataSource]="datatableValues.dxDataSource"
                   showBorders="true"
                   showRowLines="true"
                   showColumnLines="true"
@@ -29,7 +29,7 @@
 
 
       <!-- Start Edit here -->
-      <dxi-column *ngFor="let row of rows"
+      <dxi-column *ngFor="let row of datatableValues.rows"
                   [width]="row.width"
                   [dataField]="row.fieldName"
                   [caption]="row.caption"
