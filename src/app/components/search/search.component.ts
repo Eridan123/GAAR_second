@@ -89,7 +89,7 @@ export class SearchComponent implements OnInit {
 
     var datatableModel4 = permissionDocumentDatatableValues;
     fieldNames = searchQueryBuilder(PermissionDocumentColumns,this.searchValue);
-    datatableModel1.filterValue = [[ 'MarkAsDeleted', '=', false ], 'and',
+    datatableModel4.filterValue = [[ 'MarkAsDeleted', '=', false ], 'and',
       [ [fieldNames[0],'Contains',this.searchValue], 'or',
         [fieldNames[1],'Contains',this.searchValue], 'or',
         [fieldNames[2],'Contains',this.searchValue], 'or',
