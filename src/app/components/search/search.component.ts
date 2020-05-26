@@ -91,9 +91,9 @@ export class SearchComponent implements OnInit {
     fieldNames = searchQueryBuilder(PermissionDocumentColumns,this.searchValue);
     datatableModel4.filterValue = [[ 'MarkAsDeleted', '=', false ], 'and',
       [ [fieldNames[0],'Contains',this.searchValue], 'or',
-        [fieldNames[1],'Contains',this.searchValue], 'or',
-        [fieldNames[2],'Contains',this.searchValue], 'or',
-        [fieldNames[3],'Contains',this.searchValue]]
+        // [fieldNames[1],'Contains',this.searchValue], 'or',
+        // [fieldNames[2],'Contains',this.searchValue], 'or',
+        [fieldNames[1],'Contains',this.searchValue]]
     ];
     datatableModel4 = datatableBuilderFunction(datatableModel4);
     datatableModel4.subtitle ="Cтоимости разрешительных документов";
